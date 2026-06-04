@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kembali Licin Alami — Ramuan Alami Penelitian Jepang untuk Miss V Lebih Nyaman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #FDF7F9;
+      color: #2C1A24;
+      font-size: 15px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── VARIABLES ──────────────────────────────────────── */
+    :root {
+      --primary:  #8B3F6F;
+      --secondary:#9B5050;
+      --accent:   #C49A4A;
+      --plum:     #5C2448;
+      --bg-light: #FDF7F9;
+      --bg-soft:  #F5ECF0;
+      --text:     #2C1A24;
+      --muted:    #7A5A6A;
+      --white:    #FFFFFF;
+      --max-w:    660px;
+      --r:        16px;
+      --r-btn:    50px;
+      --hero-img: url('https://drive.google.com/thumbnail?id=1wh8WCk6fu3zgamkt8qXHSPTotCj-LjES&sz=w1200');
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 22px; }
+    section { width: 100%; }
+
+    /* ── TYPOGRAPHY ─────────────────────────────────────── */
+    h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.2; }
+    h1 { font-size:clamp(28px,7vw,54px); font-weight:700; }
+    h2 { font-size:clamp(23px,5vw,38px); font-weight:700; }
+    h3 { font-size:clamp(17px,3.5vw,22px); font-weight:700; }
+    p  { margin-bottom:1rem; }
+    p:last-child { margin-bottom:0; }
+    strong { font-weight:700; }
+
+    /* ── CTA BUTTON ─────────────────────────────────────── */
+    .btn {
+      display:block; width:100%;
+      background:var(--accent); color:var(--white);
+      font-family:'Lato',sans-serif; font-weight:700;
+      font-size:16px; letter-spacing:.4px;
+      padding:20px 32px; border-radius:var(--r-btn);
+      text-align:center; text-decoration:none;
+      cursor:pointer; border:none;
+      animation:ctaPulse 3s ease-in-out infinite;
+      transition:transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(196,154,74,.45); animation:none; }
+    @keyframes ctaPulse {
+      0%,100% { box-shadow:0 0 0 0 rgba(196,154,74,.35); }
+      50%      { box-shadow:0 0 0 12px rgba(196,154,74,0); }
+    }
+    @media (min-width:640px) { .btn { width:auto; min-width:340px; } }
+
+    /* ── ORNAMENT ───────────────────────────────────────── */
+    .orn { text-align:center; color:var(--accent); font-size:14px; letter-spacing:10px; margin:18px 0; opacity:.75; }
+
+    /* ── ANIMATIONS ─────────────────────────────────────── */
+    .fu { opacity:0; transform:translateY(28px); transition:opacity .65s ease,transform .65s ease; }
+    .fu.on { opacity:1; transform:translateY(0); }
+    .fu-d1 { transition-delay:.1s; }
+    .fu-d2 { transition-delay:.2s; }
+    .fu-d3 { transition-delay:.3s; }
+
+    /* ════════════════════════════════════════════════════
+       HERO — ABOVE THE FOLD
+       Mobile:  stacked (text > image-with-gradient > text)
+       Desktop: split (left=image | right=text)
+    ════════════════════════════════════════════════════ */
+    .hero {
+      background:var(--primary);
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ── Desktop left image panel (hidden on mobile) ── */
+    .hero-img-panel {
+      display:none;
+    }
+
+    /* ── Text panel ─── */
+    .hero-text-panel {
+      padding:48px 22px 60px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .hero-text-panel h1  { color:var(--white); width:100%; }
+    .hero-text-panel h1 em { font-style:normal; color:var(--accent); }
+    .eyebrow {
+      font-family:'Lato',sans-serif; font-size:11px; font-weight:700;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--accent); margin-bottom:18px;
+    }
+    .hero-sub {
+      color:rgba(255,255,255,.82); font-size:16px;
+      max-width:520px; margin:0 auto 40px;
+    }
+    .btn-center { text-align:center; width:100%; }
+
+    /* ── Mobile image (between h1 and subhead) ── */
+    .hero-img-mobile {
+      position:relative;
+      width:calc(100% + 44px); /* bleed past .hero-text-panel padding */
+      margin: 24px -22px;
+      overflow:hidden;
+      flex-shrink:0;
+    }
+    .hero-img-mobile img {
+      width:100%; display:block;
+      max-height:72vw; min-height:220px;
+      object-fit:cover; object-position:center 18%;
+    }
+    /* gradient top */
+    .hero-img-mobile::before {
+      content:'';
+      position:absolute; top:0; left:0; right:0;
+      height:90px; z-index:2; pointer-events:none;
+      background:linear-gradient(to bottom, var(--primary) 0%, transparent 100%);
+    }
+    /* gradient bottom */
+    .hero-img-mobile::after {
+      content:'';
+      position:absolute; bottom:0; left:0; right:0;
+      height:90px; z-index:2; pointer-events:none;
+      background:linear-gradient(to top, var(--primary) 0%, transparent 100%);
+    }
+
+    /* ── DESKTOP: split layout ── */
+    @media (min-width:768px) {
+      .hero {
+        flex-direction:row;
+        min-height:100vh;
+      }
+      /* Left: image */
+      .hero-img-panel {
+        display:block;
+        flex:1;
+        position:relative;
+        overflow:hidden;
+      }
+      .hero-img-panel img {
+        position:absolute; inset:0;
+        width:100%; height:100%;
+        object-fit:cover; object-position:center 18%;
+      }
+      /* Right: text */
+      .hero-text-panel {
+        flex:1;
+        display:flex; flex-direction:column;
+        justify-content:center; align-items:flex-start;
+        padding:80px 56px;
+        text-align:left;
+      }
+      .hero-text-panel .orn { text-align:left; }
+      .hero-sub { margin-left:0; margin-right:0; }
+      /* Hide mobile image on desktop */
+      .hero-img-mobile { display:none; }
+      /* btn left-aligned on desktop */
+      .btn-center { text-align:left; }
+    }
+
+    /* ── PROOF STRIP ─────────────────────────────────── */
+    .proof-strip { background:var(--plum); padding:36px 22px; text-align:center; }
+    .proof-strip blockquote {
+      font-family:'Playfair Display',serif; font-style:italic;
+      font-size:15.5px; color:rgba(255,255,255,.88);
+      max-width:560px; margin:0 auto 12px; line-height:1.75;
+    }
+    .proof-name { font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.5px; }
+
+    /* ── PROBLEM ─────────────────────────────────────── */
+    .sec-problem { background:var(--bg-soft); padding:72px 0; }
+    .sec-problem h2 { color:var(--primary); margin-bottom:24px; }
+    .problem-img { width:100%; border-radius:var(--r); display:block; margin-bottom:36px; object-fit:cover; max-height:420px; }
+    .dot-list { list-style:none; margin:20px 0 28px; }
+    .dot-list li {
+      padding:11px 0 11px 30px; position:relative;
+      border-bottom:1px solid rgba(139,63,111,.12); color:var(--text); font-size:15px;
+    }
+    .dot-list li:last-child { border-bottom:none; }
+    .dot-list li::before { content:'✦'; position:absolute; left:0; top:13px; color:var(--secondary); font-size:10px; }
+    .callout {
+      background:var(--white); border-left:4px solid var(--primary);
+      border-radius:0 var(--r) var(--r) 0; padding:22px 26px; margin-top:24px;
+      font-style:italic; color:var(--primary);
+      font-family:'Playfair Display',serif; font-size:16px; line-height:1.65;
+    }
+
+    /* ── MECHANISM ───────────────────────────────────── */
+    .sec-mech { background:var(--bg-light); padding:72px 0; }
+    .sec-mech h2 { color:var(--primary); margin-bottom:22px; }
+    .bahan-img { width:100%; border-radius:var(--r); display:block; margin:32px 0; box-shadow:0 8px 36px rgba(139,63,111,.12); }
+    .mech-box { background:var(--bg-soft); border:1px solid rgba(139,63,111,.18); border-radius:var(--r); padding:26px; margin-top:8px; }
+    .mech-box strong { color:var(--primary); }
+
+    /* ── FOR WHO ─────────────────────────────────────── */
+    .sec-forwho { background:var(--bg-soft); padding:72px 0; }
+    .sec-forwho h2 { color:var(--primary); margin-bottom:24px; }
+    .check-list { list-style:none; margin:8px 0 24px; }
+    .check-list li {
+      padding:13px 0 13px 40px; position:relative;
+      border-bottom:1px solid rgba(139,63,111,.1); font-size:15px;
+    }
+    .check-list li:last-child { border-bottom:none; }
+    .check-list li::before {
+      content:'✓'; position:absolute; left:0; top:14px;
+      width:24px; height:24px; background:var(--primary); color:var(--white);
+      border-radius:50%; text-align:center; line-height:24px; font-size:12px; font-weight:700;
+    }
+    .disclaimer { font-size:13px; color:var(--muted); font-style:italic; border-top:1px solid rgba(139,63,111,.15); padding-top:18px; margin-top:8px; }
+
+    /* ── HOW IT WORKS ────────────────────────────────── */
+    .sec-how { background:var(--bg-light); padding:72px 0; }
+    .sec-how h2 { color:var(--primary); text-align:center; margin-bottom:44px; }
+    .steps { display:flex; flex-direction:column; gap:28px; }
+    .step  { display:flex; gap:22px; align-items:flex-start; }
+    .step-n {
+      flex-shrink:0; width:50px; height:50px;
+      background:var(--primary); color:var(--white); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Playfair Display',serif; font-size:22px; font-weight:700;
+      box-shadow:0 4px 16px rgba(139,63,111,.25);
+    }
+    .step-txt h3 { color:var(--primary); margin-bottom:6px; font-size:17px; }
+    .step-txt p  { margin:0; font-size:15px; color:var(--text); }
+
+    /* ── VALUE STACK ─────────────────────────────────── */
+    .sec-value { background:var(--plum); padding:80px 0; }
+    .sec-value h2 { color:var(--white); text-align:center; margin-bottom:8px; }
+    .value-sub { text-align:center; color:rgba(255,255,255,.65); margin-bottom:40px; font-size:15px; }
+    .mockup-img { display:block; width:100%; max-width:420px; margin:0 auto 44px; border-radius:var(--r); box-shadow:0 20px 60px rgba(0,0,0,.35); }
+    .val-cards { display:flex; flex-direction:column; gap:16px; margin-bottom:36px; }
+    .val-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.13); border-radius:var(--r); padding:24px; }
+    .val-card-hd { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+    .val-icon { font-size:30px; line-height:1; }
+    .val-card h3 { color:var(--accent); font-size:17px; }
+    .val-card p { color:rgba(255,255,255,.78); font-size:14px; line-height:1.7; margin:0; }
+    .testi-card { background:rgba(255,255,255,.06); border-left:4px solid var(--accent); border-radius:0 var(--r) var(--r) 0; padding:24px 26px; margin:36px 0; }
+    .testi-card blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:15.5px; color:rgba(255,255,255,.88); margin-bottom:12px; line-height:1.75; }
+    .testi-card cite { font-style:normal; font-size:13px; font-weight:700; color:var(--accent); }
+    .price-block { text-align:center; margin-bottom:28px; }
+    .price-old { font-size:15px; color:rgba(255,255,255,.4); text-decoration:line-through; margin-bottom:4px; }
+    .price-new { font-family:'Playfair Display',serif; font-size:clamp(40px,10vw,58px); font-weight:700; color:var(--accent); line-height:1; display:block; margin-bottom:6px; }
+    .price-note { font-size:13px; color:rgba(255,255,255,.5); }
+    .trust { list-style:none; background:rgba(255,255,255,.06); border-radius:var(--r); padding:20px 24px; margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+    .trust li { display:flex; align-items:center; gap:10px; font-size:14px; color:rgba(255,255,255,.82); }
+    .trust li::before { content:'✓'; color:var(--accent); font-weight:700; font-size:15px; flex-shrink:0; }
+
+    /* ── CLOSING CTA — hero image bg at 30% ─────────── */
+    .sec-close {
+      position:relative;
+      background:var(--primary);
+      padding:80px 0;
+      text-align:center;
+      overflow:hidden;
+    }
+    /* Hero image overlay at ~30% opacity */
+    .sec-close::before {
+      content:'';
+      position:absolute; inset:0; z-index:0;
+      background-image:var(--hero-img);
+      background-size:cover;
+      background-position:center 18%;
+      opacity:.30;
+      pointer-events:none;
+    }
+    .sec-close .wrap { position:relative; z-index:1; }
+    .sec-close h2 { color:var(--white); margin-bottom:8px; }
+    .sec-close p  { color:rgba(255,255,255,.82); max-width:500px; margin:0 auto; }
+    .close-price-old { font-size:15px; color:rgba(255,255,255,.38); text-decoration:line-through; margin:28px 0 4px; }
+    .close-price-new { font-family:'Playfair Display',serif; font-size:clamp(36px,9vw,52px); font-weight:700; color:var(--accent); display:block; margin-bottom:32px; line-height:1; }
+    .close-trust { list-style:none; background:rgba(255,255,255,.08); border-radius:var(--r); padding:20px 24px; margin-top:24px; display:flex; flex-direction:column; gap:10px; max-width:var(--max-w); margin-left:auto; margin-right:auto; }
+    .close-trust li { display:flex; align-items:center; gap:10px; font-size:14px; color:rgba(255,255,255,.8); }
+    .close-trust li::before { content:'✓'; color:var(--accent); font-weight:700; font-size:15px; flex-shrink:0; }
+
+    /* ── TESTI (white bg sections) ───────────────────── */
+    .testi-white { background:var(--white); border-left:4px solid var(--primary); border-radius:0 var(--r) var(--r) 0; padding:24px 26px; margin:32px 0; box-shadow:0 4px 20px rgba(139,63,111,.07); }
+    .testi-white blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:16px; color:var(--text); margin-bottom:12px; line-height:1.75; }
+    .testi-white cite { font-style:normal; font-size:13px; font-weight:700; color:var(--secondary); }
+
+    /* ════════════════════════════════════════════════════
+       STICKY CTA — bottom bar, no price
+    ════════════════════════════════════════════════════ */
+    .sticky-cta {
+      position:fixed; bottom:0; left:0; right:0; z-index:999;
+      background:rgba(92,36,72,.96);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      padding:12px 20px;
+      padding-bottom:max(16px, env(safe-area-inset-bottom));
+      box-shadow:0 -4px 24px rgba(0,0,0,.25);
+      transform:translateY(110%);
+      transition:transform .4s cubic-bezier(.25,.8,.25,1);
+    }
+    .sticky-cta.visible { transform:translateY(0); }
+    .sticky-btn {
+      display:block; width:100%; max-width:480px; margin:0 auto;
+      background:var(--accent); color:var(--white);
+      font-family:'Lato',sans-serif; font-weight:700;
+      font-size:15px; letter-spacing:.3px;
+      padding:14px 28px; border-radius:50px;
+      text-align:center; text-decoration:none;
+      transition:opacity .2s;
+    }
+    .sticky-btn:hover { opacity:.88; }
+
+    /* ── RESPONSIVE (global) ─────────────────────────── */
+    @media (min-width:768px) {
+      .sec-problem,.sec-mech,.sec-forwho,.sec-how,.sec-value,.sec-close { padding:100px 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO — ABOVE THE FOLD
+     Mobile : eyebrow > h1 > [image+gradient] > sub > CTA
+     Desktop: [image left] | [text right]
+═══════════════════════════════════════════════════════ -->
+<section class="hero" id="hero-section">
+
+  <!-- Desktop left: full-height image panel -->
+  <div class="hero-img-panel">
+    <img src="https://drive.google.com/thumbnail?id=1wh8WCk6fu3zgamkt8qXHSPTotCj-LjES&sz=w1200"
+         alt="Wanita merasakan kenyamanan kembali">
+  </div>
+
+  <!-- Text panel -->
+  <div class="hero-text-panel">
+    <p class="eyebrow fu">Berbasis Penelitian Jepang · Bahan Alami dari Dapur</p>
+    <h1 class="fu fu-d1">Miss V Terasa Lebih Lembap, Nyaman, dan Tidak Perih Lagi dalam <em>21 Hari</em></h1>
+
+    <!-- Mobile image with gradient (hidden on desktop) -->
+    <div class="hero-img-mobile fu fu-d2">
+      <img src="https://drive.google.com/thumbnail?id=1wh8WCk6fu3zgamkt8qXHSPTotCj-LjES&sz=w1200"
+           alt="Wanita merasakan kenyamanan kembali">
+    </div>
+
+    <div class="orn fu fu-d2">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <p class="hero-sub fu fu-d2">Cukup pakai ramuan alami dari dapur. Tanpa bergantung pada pelumas sementara. Bahkan kalau kamu sudah coba banyak cara sebelumnya dan hasilnya tidak pernah bertahan.</p>
+    <div class="btn-center fu fu-d3">
+      <a href="#order" class="btn">Ya, Saya Mau Miss V Lebih Nyaman →</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PROBLEM / AGITASI
+═══════════════════════════════════════════════════════ -->
+<section class="sec-problem">
+  <div class="wrap">
+    <img class="problem-img fu"
+         src="https://drive.google.com/thumbnail?id=10-rQktk-ffHntoKq51QveWyM4rd4s6Ov&sz=w1200"
+         alt="Rasa tidak nyaman yang sudah lama dibiarkan">
+    <div class="fu fu-d1">
+      <h2>Sudah Coba Pelumas, Tapi Besoknya Rasa Kering Itu Balik Lagi?</h2>
+      <p style="margin-top:20px; color:var(--muted);">Kalau kamu sudah usia 45 ke atas dan akhir-akhir ini sering merasakan:</p>
+      <ul class="dot-list">
+        <li>Miss V terasa kering atau tidak nyaman hampir setiap hari</li>
+        <li>Rasa perih setelah buang air kecil atau setelah aktivitas tertentu</li>
+        <li>Panas atau gatal yang muncul tiba-tiba tanpa sebab jelas</li>
+        <li>Tidak nyaman duduk lama atau pakai celana tertentu</li>
+        <li>Mulai menghindari dekat dengan pasangan karena takut sakit</li>
+      </ul>
+      <p style="color:var(--muted);">...kamu tidak sendiri. Dan kemungkinan besar, kamu sudah coba pelumas atau berbagai produk lain. Ada yang membantu — tapi hanya beberapa jam. Besok pagi, rasa itu kembali lagi seperti sediakala.</p>
+      <div class="callout">
+        Bukan karena produknya buruk. Tapi karena pelumas bekerja di permukaan — sementara yang dibutuhkan tubuhmu ada di dalam.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF 1 -->
+<div class="proof-strip fu">
+  <blockquote>"Saya sudah pakai pelumas hampir setahun. Tiap hari harus pakai, kalau enggak perih banget. Saya sampai berpikir ini akan berlangsung seumur hidup. Tapi begitu baca penjelasan soal akar masalahnya — saya baru sadar selama ini saya cuma nutupin gejalanya, bukan bantu tubuh dari dalam."</blockquote>
+  <p class="proof-name">— Bu Rini, 54 tahun, Surabaya</p>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     MEKANISME / BIG IDEA
+═══════════════════════════════════════════════════════ -->
+<section class="sec-mech">
+  <div class="wrap">
+    <div class="fu">
+      <h2>Kenapa Tubuh Perlu Didukung dari Dalam — dan Apa Hubungannya dengan Penelitian Jepang</h2>
+      <p style="margin-top:20px;">Setelah usia 45+, jaringan kewanitaan bisa menjadi lebih tipis dan lebih sulit mempertahankan kelembapannya sendiri. Bukan karena tubuh rusak — tapi karena perubahan hormon mengubah cara jaringan itu bekerja.</p>
+      <p>Pelumas membantu sesaat. Tapi kalau jaringannya tidak mendapat dukungan dari dalam, rasa kering dan perih akan terus berulang.</p>
+    </div>
+    <img class="bahan-img fu"
+         src="https://drive.google.com/thumbnail?id=1wv0k8WicsI_wHwnhmaIK6jLaKoQdyL-x&sz=w1200"
+         alt="Bahan ramuan alami — susu kedelai, jahe, madu, kayu manis">
+    <div class="fu">
+      <div class="mech-box">
+        <p>Inilah yang ditemukan para peneliti saat mempelajari pola makan wanita Jepang — yang konsumsi kedelai hariannya secara konsisten memberikan tubuh mereka <strong>isoflavon</strong>, senyawa alami yang memiliki kemiripan struktur dengan estrogen. Bukan terapi hormon. Bukan obat. Hanya makanan sehari-hari yang memberikan dukungan yang sangat relevan bagi wanita usia matang.</p>
+      </div>
+      <p style="margin-top:24px;">Dari pendekatan inilah panduan ini dibangun: ramuan berbasis isoflavon dari bahan dapur, dikonsumsi rutin selama 21 hari — bukan pelumas yang harus dipakai selamanya.</p>
+    </div>
+
+    <!-- SOCIAL PROOF 2 -->
+    <div class="testi-white fu">
+      <blockquote>"Awalnya saya skeptis. Saya pikir paling cuma tips biasa lagi. Tapi pas baca penjelasan soal isoflavon dan kenapa pelumas tidak menyentuh masalah dasarnya — saya langsung ngerti kenapa selama ini hasilnya tidak pernah bertahan."</blockquote>
+      <cite>— Bu Dewi, 49 tahun, Bandung</cite>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     FOR WHO
+═══════════════════════════════════════════════════════ -->
+<section class="sec-forwho">
+  <div class="wrap fu">
+    <h2>Panduan Ini untuk Kamu yang Sudah Lelah dengan Solusi yang Cuma Tahan Beberapa Jam</h2>
+    <p style="margin-top:20px; margin-bottom:8px; color:var(--muted);">Panduan ini cocok kalau kamu:</p>
+    <ul class="check-list">
+      <li>Usia 45 ke atas dan sudah merasakan perubahan nyata di area kewanitaan</li>
+      <li>Sudah coba berbagai produk tapi hasilnya tidak pernah bertahan lebih dari beberapa jam</li>
+      <li>Ingin pendekatan dari dalam, bukan terus-terusan bergantung pada produk luar</li>
+      <li>Lebih suka bahan alami yang familiar, bisa disiapkan sendiri dari dapur</li>
+      <li>Butuh langkah yang jelas — bukan teori panjang yang bingung mulai dari mana</li>
+    </ul>
+    <p class="disclaimer">Panduan ini tidak diperuntukkan bagi yang sedang hamil, menyusui, memiliki alergi kedelai, atau sedang dalam penanganan medis untuk kondisi hormon tertentu. Konsultasikan dulu dengan dokter.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════════ -->
+<section class="sec-how">
+  <div class="wrap">
+    <h2 class="fu">Cuma 3 Langkah, Mulai Hari Ini dari Dapur Sendiri</h2>
+    <div class="steps">
+      <div class="step fu">
+        <div class="step-n">1</div>
+        <div class="step-txt">
+          <h3>Pahami akar masalahnya</h3>
+          <p>Kamu akan paham kenapa Miss V kering dan perih setelah usia 45+, dan kenapa pelumas saja tidak cukup — dalam bahasa yang mudah, tanpa istilah medis yang berat.</p>
+        </div>
+      </div>
+      <div class="step fu fu-d1">
+        <div class="step-n">2</div>
+        <div class="step-txt">
+          <h3>Racik ramuannya</h3>
+          <p>Resep sudah ada, takaran sudah jelas. Bahan dari susu kedelai, jahe, madu, dan kayu manis — semua ada di warung atau minimarket terdekat. Waktu persiapan: 5 menit sehari.</p>
+        </div>
+      </div>
+      <div class="step fu fu-d2">
+        <div class="step-n">3</div>
+        <div class="step-txt">
+          <h3>Jalani 21 hari dengan sistem yang terarah</h3>
+          <p>Ada jadwal mingguan, tracker harian, dan panduan membaca perubahan tubuhmu. Tidak perlu menebak-nebak. Tidak perlu sempurna setiap hari.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     VALUE STACK + HARGA
+═══════════════════════════════════════════════════════ -->
+<section class="sec-value" id="order">
+  <div class="wrap">
+    <h2 class="fu">Yang Kamu Dapatkan Hari Ini</h2>
+    <p class="value-sub fu">Satu paket lengkap — dari pemahaman sampai pelaksanaan</p>
+
+    <img class="mockup-img fu"
+         src="https://drive.google.com/thumbnail?id=166Z9_v8ekWRPxTAkKQEEqr7AohJvClum&sz=w1200"
+         alt="Bundle Kembali Licin Alami — ebook utama + 2 bonus">
+
+    <div class="val-cards">
+      <div class="val-card fu">
+        <div class="val-card-hd"><span class="val-icon">📖</span><h3>eBook Utama — Kembali Licin Alami</h3></div>
+        <p>Panduan lengkap 47 halaman: penjelasan akar masalah, mekanisme isoflavon dari penelitian Jepang, resep ramuan utama + 4 variasi rasa, protokol 21 hari bertahap, panduan pemicu tersembunyi, dan cara membaca perubahan tubuhmu.</p>
+      </div>
+      <div class="val-card fu fu-d1">
+        <div class="val-card-hd"><span class="val-icon">🎁</span><h3>Bonus 1 — Kit Racik &amp; Belanja 21 Hari</h3></div>
+        <p>Daftar belanja lengkap, takaran cepat, prep mingguan agar tidak kelabakan tiap hari, dan panduan variasi rasa supaya konsisten 21 hari tanpa bosan.</p>
+      </div>
+      <div class="val-card fu fu-d2">
+        <div class="val-card-hd"><span class="val-icon">🎁</span><h3>Bonus 2 — Tracker Nyaman Miss V + Checklist Pemicu</h3></div>
+        <p>Tracker harian 21 hari, evaluasi mingguan, skor gejala awal vs akhir, dan checklist pemicu dari produk kamar mandi, pakaian, sampai kebiasaan harian.</p>
+      </div>
+    </div>
+
+    <!-- SOCIAL PROOF 3 -->
+    <div class="testi-card fu">
+      <blockquote>"Saya beli karena bahannya dari dapur sendiri — jadi kalau tidak cocok pun tidak rugi banyak. Minggu kedua saya notice rasa perihnya sudah tidak setiap hari. Itu sudah lebih dari yang saya harapkan."</blockquote>
+      <cite>— Bu Lestari, 51 tahun, Yogyakarta</cite>
+    </div>
+
+    <div class="price-block fu">
+      <p class="price-old">Rp297.000</p>
+      <span class="price-new">Rp127.000</span>
+      <p class="price-note">Sekali bayar &nbsp;·&nbsp; Akses seumur hidup &nbsp;·&nbsp; Langsung diunduh</p>
+    </div>
+    <div class="btn-center fu">
+      <a href="#order" class="btn">Ya, Saya Mau Mulai 21 Hari Ini →</a>
+    </div>
+    <ul class="trust fu">
+      <li>Akses seumur hidup — sekali bayar, tidak ada biaya bulanan</li>
+      <li>Langsung bisa diunduh setelah pembayaran</li>
+      <li>Pembayaran aman</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     CLOSING CTA — hero image bg at 30% opacity
+═══════════════════════════════════════════════════════ -->
+<section class="sec-close">
+  <div class="wrap">
+    <h2 class="fu">Mulai Hari Ini — Tubuhmu Sudah Cukup Lama Menunggu</h2>
+    <div class="orn fu">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <p class="fu">Setiap hari yang lewat tanpa dukungan yang tepat, tubuhmu terus bekerja lebih keras dari yang seharusnya. Sementara solusinya ada — dan bisa dimulai hari ini dari dapur sendiri.</p>
+    <p class="fu" style="margin-top:12px;">Bukan dengan biaya besar. Bukan dengan rutinitas yang menyita waktu. Cukup 5 menit sehari, bahan dari warung terdekat, dan sistem yang sudah jelas.</p>
+    <p class="close-price-old fu">Rp297.000</p>
+    <span class="close-price-new fu">Rp127.000</span>
+    <div class="btn-center fu">
+      <a href="#order" class="btn">Ya, Saya Mau Coba Ramuannya →</a>
+    </div>
+    <ul class="close-trust fu">
+      <li>Akses seumur hidup</li>
+      <li>Langsung diunduh setelah pembayaran</li>
+      <li>Pembayaran aman</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     STICKY CTA BAR — no price, shows after hero
+═══════════════════════════════════════════════════════ -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#order" class="sticky-btn">Ya, Saya Mau Miss V Lebih Nyaman →</a>
+</div>
+
+
+<!-- ── SCRIPTS ─────────────────────────────────────────── -->
+<script>
+  /* ── Fade-up intersection observer ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+  /* ── Trigger hero elements on load ── */
+  document.querySelectorAll('.hero .fu').forEach((el, i) => {
+    setTimeout(() => el.classList.add('on'), i * 160);
+  });
+
+  /* ── Sticky CTA: show after hero exits viewport ── */
+  const heroEl   = document.getElementById('hero-section');
+  const stickyEl = document.getElementById('sticky-cta');
+  const orderEl  = document.getElementById('order');
+
+  function updateSticky() {
+    const heroGone  = heroEl.getBoundingClientRect().bottom < 0;
+    const atOrder   = orderEl.getBoundingClientRect().top < window.innerHeight * 0.5;
+    if (heroGone && !atOrder) {
+      stickyEl.classList.add('visible');
+    } else {
+      stickyEl.classList.remove('visible');
+    }
+  }
+  window.addEventListener('scroll', updateSticky, { passive: true });
+</script>
+
+</body>
+</html>
